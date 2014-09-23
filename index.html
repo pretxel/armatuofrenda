@@ -7,14 +7,41 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="js/touch-punch.js"></script>
 
-<style>
-        #draggable1, #draggable2, #draggable3 { width: 100px; height: 100px; padding: 0.5em; }
-        </style>
+	<style>
+        .draggable-ofrenda { width: 100px; height: 100px; cursor: pointer; }
+        .droppable-ofrenda{ width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+    	.decoraciones{
+    		display: inline-block;
+    		background: rgb(122, 12, 173);
+    	}
+    	.listaDrag{
+    		list-style-type: none;
+    	}
+    </style>
         <script>
         $(function() {
-          $( "#draggable1" ).draggable();
-           $( "#draggable2" ).draggable();
-            $( "#draggable3" ).draggable();
+          $( ".draggable-ofrenda" ).draggable();
+
+          $( ".droppable-ofrenda" ).droppable({
+            activeClass: "ui-state-hover",
+            hoverClass: "ui-state-active",
+            drop: function( event, ui ) {
+              $( this )
+                .addClass( "ui-state-highlight" )
+                .find( "p" )
+                  .html( "Dropped!" );
+                  console.log("Drop IN");
+
+            },
+            out: function( event, ui){
+            	$( this ).removeClass( "ui-state-highlight" );
+            	$( this ).find( "p" ).html( "Selecciona!" );
+            	console.log("Drop OUT");
+            }
+          });
+
+
+           
         });
         </script>
 
@@ -27,17 +54,52 @@
 
 <div class="demo">
 
-      <div id="draggable1" class="ui-widget-content ui-draggable" style="position: relative;">
+
+		<article class="decoraciones">
+
+			<ul class="listaDrag">
+				<li>
+					<img id="1" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Bat-Moon-icon.png">
+				</li>
+				<li>
+					<img id="2" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Bird-3-icon.png">
+				</li>
+				<li>
+					<img id="3" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Devil-Butler-icon.png">
+				</li>
+				<li>
+					<img id="4" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Bug-icon.png">
+				</li>
+				<li>
+					<img id="5" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Coffin-Casket-icon.png">
+				</li>
+				<li>
+					<img id="6" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Ghost-icon.png"> 
+				</li>
+			</ul>
+
+		</article>
+
+		<article class="ofrenda">
+
+			<div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
+        	<p>Selecciona</p>
+	      	</div>
+
+	      	<div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
+	        	<p>Selecciona</p>
+	      	</div>
+
+		</article>
+		
+
+		
+
+     <!--  <div id="draggable1" class="ui-widget-content ui-draggable" style="position: relative;">
         <p>Arrastra1</p>
-      </div>
+      </div> -->
 
-      <div id="draggable2" class="ui-widget-content ui-draggable" style="position: relative;">
-        <p>Arrastra2</p>
-      </div>
-
-      <div id="draggable3" class="ui-widget-content ui-draggable" style="position: relative;">
-        <p>Arrastra3</p>
-      </div>
+     
 
       </div><!-- End demo -->
 </body>
