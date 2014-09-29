@@ -1,106 +1,231 @@
 <html>
+
 <head>
-	<title>arma tu ofrenda</title>
-	 <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/css/lightness/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
+    <title>arma tu ofrenda</title>
+    <!--  <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet"> -->
+    <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet" media="all">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	<script src="js/touch-punch.js"></script>
+    <script src="js/touch-punch.js"></script>
+    <script src="js/html2canvas.js"></script>
 
-	<style>
-        .draggable-ofrenda { width: 100px; height: 100px; cursor: pointer; }
-        .droppable-ofrenda{ width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
-    	.decoraciones{
-    		display: inline-block;
-    		background: rgb(122, 12, 173);
-    	}
-    	.listaDrag{
-    		list-style-type: none;
-    	}
+    <style>
+    .draggable-ofrenda {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+    /*.draggable-ofrenda:hover {
+        width: 70px;
+        height: 70px;
+    }*/
+    .droppable-ofrenda {
+        width: 150px;
+        height: 150px;
+        /*padding: 0.5em;*/
+        float: left;
+        /*margin: 10px;*/
+    }
+    .decoraciones {
+        /*display: inline-block;*/
+        background: rgba(122, 12, 173, 0.59);
+        position: absolute;
+        height: 100%;
+       /* overflow-y: scroll;
+        overflow-x: hidden;*/
+    }
+    .listaDrag {
+        /*list-style-type: none;*/
+        padding-left: 0px;
+        padding-right: 10px;
+    }
+    body {
+        margin: 0;
+    }
     </style>
-        <script>
-        $(function() {
-          $( ".draggable-ofrenda" ).draggable();
+    <script>
+    $(function() {
+        dragElement(true);
 
-          $( ".droppable-ofrenda" ).droppable({
+        
+
+
+        $("#ocultarMenu").on("click",function(){
+          $(".decoraciones").animate({left:'-100px'});
+          // $("#mostrarMenu").css("display", "block");
+          $("#mostrarMenu").fadeIn( "slow");
+        });
+
+        $("#mostrarMenu").on("click",function(){
+          // $("#mostrarMenu").css("display", "none");
+          $("#mostrarMenu").fadeOut( "slow");
+          $(".decoraciones").animate({left:'0px'});
+        });
+
+        $(".droppable-ofrenda").droppable({
             activeClass: "ui-state-hover",
             hoverClass: "ui-state-active",
-            drop: function( event, ui ) {
-              $( this )
-                .addClass( "ui-state-highlight" )
-                .find( "p" )
-                  .html( "Dropped!" );
-                  console.log("Drop IN");
+            drop: function(event, ui) {
+                $(this)
+                    .addClass("ui-state-highlight")
+                    .find("p")
+                    .html("Dropped!");
+                console.log("Drop IN");
+
+                //$(this).append(ui.draggable);
+                //ui.draggable.css('top', ui.position.top);
+                //ui.draggable.css('left', ui.position.left);
+                //ui.draggable.css('position', 'absolute');
+                //ui.draggable.draggable('destroy').draggable();
+                if (!ui.helper.hasClass("inOfrenda")){
+
+                $(ui.helper[0]).clone().addClass("inOfrenda").appendTo(this.parentElement);
+              }
 
             },
-            out: function( event, ui){
-            	$( this ).removeClass( "ui-state-highlight" );
-            	$( this ).find( "p" ).html( "Selecciona!" );
-            	console.log("Drop OUT");
+            out: function(event, ui) {
+                $(this).removeClass("ui-state-highlight");
+                $(this).find("p").html("Selecciona!");
+                console.log("Drop OUT");
             }
-          });
-
-
-           
         });
-        </script>
+
+
+        function dragElement(isClone) {
+
+          if (isClone){
+
+            $(".draggable-ofrenda").draggable({
+                helper: "clone",
+                start: function(event, ui) {
+
+
+
+                },
+                stop: function(event, ui) {
+                    newId = 10;
+                    //$(this).clone().attr('id', this.id).appendTo(this.parentElement);
+
+                    dragElement(false);
+                }
+            });
+
+          }
+          else{
+
+            $(".draggable-ofrenda").draggable({
+                start: function(event, ui) {
+
+
+
+                },
+                stop: function(event, ui) {
+                    newId = 10;
+                    //$(this).clone().attr('id', this.id).appendTo(this.parentElement);
+
+                    dragElement(false);
+                }
+            });
+
+
+
+          }
+
+            
+        }
+
+
+    });
+
+
+    html2canvas(document.body).then(function(canvas) {
+        document.body.appendChild(canvas);
+    });
+
+    function imprSelec(muestra) {
+        var ficha = document.getElementById(muestra);
+        var ventimp = window.open(' ', 'popimpr');
+        ventimp.document.write(ficha.innerHTML);
+        ventimp.document.close();
+        ventimp.print();
+        ventimp.close();
+    }
+    </script>
 
 
 </head>
+
 <body>
 
 
 
 
-<div class="demo">
+    <div class="demo">
 
 
-		<article class="decoraciones">
+        <article class="decoraciones">
 
-			<ul class="listaDrag">
-				<li>
-					<img id="1" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Bat-Moon-icon.png">
-				</li>
-				<li>
-					<img id="2" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Bird-3-icon.png">
-				</li>
-				<li>
-					<img id="3" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Devil-Butler-icon.png">
-				</li>
-				<li>
-					<img id="4" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Bug-icon.png">
-				</li>
-				<li>
-					<img id="5" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Coffin-Casket-icon.png">
-				</li>
-				<li>
-					<img id="6" class="ui-widget-content ui-draggable draggable-ofrenda" src="images/Halloween-Ghost-icon.png"> 
-				</li>
-			</ul>
+            <ul class="listaDrag">
+              <li>
+                    <img id="ocultarMenu" class="button pulse-grow" src="images/arrow-left.svg" style="width: 60px;">
+                </li>
+                <li>
+                    <img id="1" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/agua.svg">
+                </li>
+                <li>
+                    <img id="2" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/botella.svg">
+                </li>
+                <li>
+                    <img id="3" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/calaverita_azucar.svg">
+                </li>
+                <li>
+                    <img id="4" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/calaverita_choco.svg">
+                </li>
+                <li>
+                    <img id="5" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/cana.svg">
+                </li>
+                <li>
+                    <img id="6" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/cerveza.svg">
+                </li>
+                <li>
+                    <img id="mas" class="button pulse-grow" src="images/arrow-down.svg" style="width: 60px;">
+                </li>
+                </ul>
 
-		</article>
+        </article>
 
-		<article class="ofrenda">
+        <!-- <article class="ofrenda">
 
-			<div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
-        	<p>Selecciona</p>
-	      	</div>
+      <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
+          <p>Selecciona</p>
+          </div>
 
-	      	<div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
-	        	<p>Selecciona</p>
-	      	</div>
+          <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
+            <p>Selecciona</p>
+          </div>
 
-		</article>
-		
+          
 
-		
+    </article> -->
 
-     <!--  <div id="draggable1" class="ui-widget-content ui-draggable" style="position: relative;">
+        <img id="mostrarMenu" src="images/arrow-right.svg" style="width: 60px; position: fixed; display:none; cursor: pointer;">
+
+        <img class="ui-widget-header ui-droppable droppable-ofrenda" src="propuesta_ofrenda_inicio.png" style="width: 100%; height: 100%">
+
+        <!-- <button onclick="javascript:window.print()">Imprimir</button> -->
+
+        <!--  <div id="draggable1" class="ui-widget-content ui-draggable" style="position: relative;">
         <p>Arrastra1</p>
       </div> -->
 
-     
+        <!-- <canvas height="300px" width="300px" id="micanvas">
+Su navegador no soporta en elemento CANVAS</canvas> -->
 
-      </div><!-- End demo -->
+
+
+    </div>
+    <!-- End demo -->
 </body>
+
 </html>
