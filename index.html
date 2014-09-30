@@ -8,6 +8,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="js/touch-punch.js"></script>
+    <script src="js/Vicky.framework.js"></script>
     <script src="js/html2canvas.js"></script>
 
     <style>
@@ -40,12 +41,24 @@
         padding-left: 0px;
         padding-right: 10px;
     }
+
+    ul.listaDrag li{
+      display: none;
+    }
+
     body {
         margin: 0;
     }
     </style>
     <script>
     $(function() {
+
+      
+
+        //Load images svgs
+
+        loadImages(Vicky.countItems,Vicky.countItems+6);
+
         dragElement(true);
 
         
@@ -61,6 +74,11 @@
           // $("#mostrarMenu").css("display", "none");
           $("#mostrarMenu").fadeOut( "slow");
           $(".decoraciones").animate({left:'0px'});
+        });
+
+        $("#mas").on("click",function(){
+          loadImages(Vicky.countItems,Vicky.countItems+6);
+
         });
 
         $(".droppable-ofrenda").droppable({
@@ -139,18 +157,37 @@
     });
 
 
-    html2canvas(document.body).then(function(canvas) {
-        document.body.appendChild(canvas);
-    });
+    
 
-    function imprSelec(muestra) {
-        var ficha = document.getElementById(muestra);
-        var ventimp = window.open(' ', 'popimpr');
-        ventimp.document.write(ficha.innerHTML);
-        ventimp.document.close();
-        ventimp.print();
-        ventimp.close();
-    }
+      function loadImages(vinit, vfinal){
+
+        $("ul.listaDrag li").css("display","none");
+
+        for(vinit; vinit< vfinal; vinit++ ){
+          $("#r"+vinit).css("display", "block");
+        }
+
+        $("#ratras").css("display", "block");
+        $("#rmas").css("display", "block");
+
+        Vicky.countItems = Vicky.countItems + 6;
+
+        if (Vicky.countItems > 22){
+          Vicky.countItems = 1;
+        }
+
+      }
+
+    // function preload() {
+      
+    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)] = new Image()
+    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)].src = "images/heroes/" + preload.arguments[1] + "" + i + ".png"
+    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)].width = "150";
+    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)].id = "heroe";
+
+      
+    // }
+
     </script>
 
 
@@ -161,34 +198,86 @@
 
 
 
-    <div class="demo">
+    <div class="ofrenda">
 
 
         <article class="decoraciones">
 
             <ul class="listaDrag">
-              <li>
+              <li id="ratras">
                     <img id="ocultarMenu" class="button pulse-grow" src="images/arrow-left.svg" style="width: 60px;">
                 </li>
-                <li>
+                <li id="r1">
                     <img id="1" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/agua.svg">
                 </li>
-                <li>
+                <li id="r2">
                     <img id="2" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/botella.svg">
                 </li>
-                <li>
+                <li id="r3">
                     <img id="3" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/calaverita_azucar.svg">
                 </li>
-                <li>
+                <li id="r4">
                     <img id="4" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/calaverita_choco.svg">
                 </li>
-                <li>
+                <li id="r5" >
                     <img id="5" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/cana.svg">
                 </li>
-                <li>
+                <li id="r6">
                     <img id="6" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/cerveza.svg">
                 </li>
-                <li>
+                 <li id="r7">
+                    <img id="7" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/copal.svg" >
+                </li>
+                <li id="r8">
+                    <img id="8" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/croquetas.svg" >
+                </li>
+                <li id="r9">
+                    <img id="9" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/cruz.svg" >
+                </li>
+                <li id="r10">
+                    <img id="10" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/flor_anaranjada.svg" >
+                </li>
+                <li id="r11">
+                    <img id="11" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/flor_morada.svg" >
+                </li>
+                <li id="r12">
+                    <img id="12" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/mandarina.svg" >
+                </li>
+                <li id="r13">
+                    <img id="13" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/manzana.svg" >
+                </li>
+                <li id="r14">
+                    <img id="14" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/mole.svg" >
+                </li>
+                <li id="r15">
+                    <img id="15" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/pan_morado.svg" >
+                </li>
+                <li id="r16">
+                    <img id="16" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/pan_muerto.svg" >
+                </li>
+                <li id="r17">
+                    <img id="17" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/papel_1.svg" >
+                </li>
+                <li id="r18">
+                    <img id="18" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/papel_2.svg" >
+                </li>
+                <li id="r19">
+                    <img id="19" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/papel_3.svg" >
+                </li>
+                <li id="r20">
+                    <img id="20" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/platanos.svg" >
+                </li>
+                <li id="r21">
+                    <img id="21" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/sopa.svg" >
+                </li>
+                <li id="r22">
+                    <img id="22" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/veladora_1.svg" >
+                </li>
+                <li id="r23">
+                    <img id="23" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/veladora_2.svg" >
+                </li>
+                
+                <li id="rmas">
                     <img id="mas" class="button pulse-grow" src="images/arrow-down.svg" style="width: 60px;">
                 </li>
                 </ul>
@@ -211,7 +300,7 @@
 
         <img id="mostrarMenu" src="images/arrow-right.svg" style="width: 60px; position: fixed; display:none; cursor: pointer;">
 
-        <img class="ui-widget-header ui-droppable droppable-ofrenda" src="propuesta_ofrenda_inicio.png" style="width: 100%; height: 100%">
+        <img class="ui-widget-header ui-droppable droppable-ofrenda" src="images/propuesta_ofrenda_inicio.png" style="width: 100%; height: 100%">
 
         <!-- <button onclick="javascript:window.print()">Imprimir</button> -->
 
