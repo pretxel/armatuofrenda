@@ -1,0 +1,85 @@
+.draggable-ofrenda {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+/*.draggable-ofrenda:hover {
+        width: 70px;
+        height: 70px;
+    }*/
+
+.droppable-ofrenda {
+    width: 100%;
+    /*height: 150px;*/
+    /*padding: 0.5em;*/
+    float: left;
+    /*margin: 10px;*/
+}
+.decoraciones {
+    /*display: inline-block;*/
+    background: rgba(122, 12, 173, 0.59);
+    position: absolute;
+    height: 100%;
+    /* overflow-y: scroll;
+        overflow-x: hidden;*/
+}
+.listaDrag {
+    /*list-style-type: none;*/
+    padding-left: 0px;
+    padding-right: 10px;
+}
+ul.listaDrag li {
+    display: none;
+}
+body {
+    margin: 0;
+}
+.container {
+    height: 100%;
+    text-align: center;
+    /* align the inline(-block) elements horizontally */
+    font: 0/0 a;
+    /* remove the gap between inline(-block) elements */
+}
+.container:before {
+    /* create a full-height inline block pseudo=element */
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    /* vertical alignment of the inline element */
+    height: 100%;
+}
+#element {
+    display: inline-block;
+    vertical-align: middle;
+    /* vertical alignment of the inline element */
+    font: 16px/1 Arial sans-serif;
+    /* <-- reset the font property */
+}
+.ofrenda {
+    background: rgb(255, 158, 44);
+}
+#btnImagen {
+    background: gray;
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    z-index: 1000;
+    position: absolute;
+    margin-top: -350;
+}
+#imagenDif {
+    margin-left: 580px;
+    width: 20px;
+    height: 30px;
+    margin-top: -480;
+
+}
+.thumb{
+    width: 100px;
+height: 120px;
+
+
+}
+
+@media all and (max-width: 699px) and (min-width: 520px) {}@media all and (max-width: 1000px) and (min-width: 700px) {}@media all and (min-width: 1001px) {}
