@@ -177,8 +177,11 @@
             $("#r" + vinit).css("display", "block");
         }
 
-        $("#ratras").css("display", "block");
+        // $("#ratras").css("display", "block");
         $("#rmas").css("display", "block");
+        $("#rmenos").css("display", "block");
+        $("#btnGuardar").css("display", "block");
+        $("#btnbasura").css("display", "block");
 
         Vicky.countItems = Vicky.countItems + 6;
 
@@ -206,11 +209,14 @@
         var centro = ancho / 2;
         var centroAlto = alto / 2;
 
-        $("#btnImagen").css("margin-left", centro - 20);
-        $("#btnImagen").css("margin-top", (centroAlto) - 50);
+        var centroX = $(".droppable-ofrenda").width();
+        var centroY = $(".droppable-ofrenda").height();
 
-        $("#imagenDif").css("margin-left", centro - 50);
-        $("#imagenDif").css("margin-top", (centroAlto ) - 190);
+        $("#btnImagen").css("margin-left", (centroX / 2) - 20);
+        $("#btnImagen").css("margin-top",  (centroY/2) - 120) ;
+
+        $("#imagenDif").css("margin-left", (centroX / 2) - 40);
+        $("#imagenDif").css("margin-top", (centroY/2) - 170);
 
     }
 
@@ -237,15 +243,62 @@
 
     <div class="ofrenda">
         <div id="boteBasura" class="ui-widget-header ui-droppable droppable-basura">
-            <img src="images/trash.svg" width="100%">
+            <img src="images/basura.svg" width="100%">
         </div>
-        <button id="captura">IMPRIMIR</button>
+        <button id="captura"><img src="images/guardar.svg" style="width: 60px;"></button>
+
+        
+
+        <!-- <article class="ofrenda">
+
+      <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
+          <p>Selecciona</p>
+          </div>
+
+          <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
+            <p>Selecciona</p>
+          </div>
+
+          
+
+    </article> -->
+
+        <!-- <img id="mostrarMenu" src="images/arrow-right.svg" style="width: 60px; position: fixed; display:none; cursor: pointer;"> -->
+
+
+
+        <!-- <div id="contenOfre" class="container"> -->
+
+            <div id="element">
+
+           
+              <img class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
+            
+            
+              <div id="btnImagen"></div>
+            <div id="imagenDif"></div>
+            </div>
+
+            
+
+
+            
+
+
+        <!-- </div> -->
+
+
 
         <article class="decoraciones">
+         
+          <img src="images/abajo_escritorio.jpg" style="width: 100%; height: 30%;">
 
             <ul class="listaDrag">
-                <li id="ratras">
-                    <img id="ocultarMenu" class="button pulse-grow" src="images/arrow-left.svg" style="width: 60px;">
+               <!--  <li id="ratras">
+                    <img id="ocultarMenu" class="button pulse-grow" src="images/izq.svg" style="width: 60px;">
+                </li> -->
+                <li id="rmenos">
+                    <img id="rmenos" class="button pulse-grow" src="images/izq.svg" style="width: 60px;">
                 </li>
                 <li id="r1">
                     <img id="1" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/agua.svg">
@@ -318,56 +371,25 @@
                 </li>
 
                 <li id="rmas">
-                    <img id="mas" class="button pulse-grow" src="images/arrow-down.svg" style="width: 60px;">
+                    <img id="mas" class="button pulse-grow" src="images/der.svg" style="width: 60px;">
                 </li>
             </ul>
 
+           <!--  <ul class="listaDrag">
+                <li id="btnGuardar">
+                    <img id="btnGuardar" class="button pulse-grow" src="images/guardar.svg" style="width: 60px;">
+                </li>
+                <li id="btnbasura">
+                    <img id="btnbasura" class="button pulse-grow" src="images/basura.svg" style="width: 60px;">
+                </li>
+              </ul> -->
+
         </article>
 
-        <!-- <article class="ofrenda">
-
-      <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
-          <p>Selecciona</p>
-          </div>
-
-          <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
-            <p>Selecciona</p>
-          </div>
-
-          
-
-    </article> -->
-
-        <img id="mostrarMenu" src="images/arrow-right.svg" style="width: 60px; position: fixed; display:none; cursor: pointer;">
+      
 
 
-
-        <!-- <div id="contenOfre" class="container"> -->
-
-            <div id="element">
-
-           
-              <img class="ui-widget-header ui-droppable droppable-ofrenda" src="images/propuesta_ofrenda_inicio.png">
-            
-            
-              <div id="btnImagen"></div>
-            <div id="imagenDif"></div>
-            </div>
-
-            
-
-
-            <input id="fileU" type="file" style="display: none;">
-
-
-        <!-- </div> -->
-
-
-
-
-
-
-
+        <input id="fileU" type="file" style="display: none;">
 
 
         <!-- <button onclick="javascript:window.print()">Imprimir</button> -->

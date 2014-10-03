@@ -12,29 +12,36 @@
 
 .droppable-ofrenda {
     width: 100%;
-    /*height: 150px;*/
+    height: 70%;
     /*padding: 0.5em;*/
     float: left;
     /*margin: 10px;*/
 }
 .decoraciones {
     /*display: inline-block;*/
-    background: rgba(122, 12, 173, 0.59);
-    position: absolute;
-    height: 100%;
+    /*background: rgba(122, 12, 173, 0.59);*/
+    /*background: url(../images/abajo_escritorio.jpg) repeat-y;*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*margin-top: -100px;*/
     /* overflow-y: scroll;
         overflow-x: hidden;*/
 }
 .listaDrag {
     /*list-style-type: none;*/
-    padding-left: 0px;
+    display: inline-flex;
+    /*padding-left: 0px;
     padding-right: 10px;
+    padding-top: 90px;*/
+    /*position: absolute;*/
+    margin-top: -150px;
 }
 ul.listaDrag li {
     display: none;
 }
 body {
     margin: 0;
+    text-align: center;
 }
 .container {
     height: 100%;
@@ -56,12 +63,14 @@ body {
     background: rgb(255, 158, 44);
 }
 #btnImagen {
-    background: gray;
-    border: 1px solid black;
+    /*background: gray;
+    border: 1px solid black;*/
     width: 30px;
     height: 30px;
-    z-index: 1000;
+    z-index: 900;
     position: absolute;
+    cursor: pointer;
+
 }
 #imagenDif {
     margin-left: 580px;
@@ -69,24 +78,22 @@ body {
     height: 30px;
     margin-top: -480;
     position: absolute;
+    z-index: 1000;
 }
 #boteBasura {
-	width: 100px;
-	height: 100px;
+    width: 100px;
+    height: 100px;
     background: rgba(218, 0, 0, 0.42);
     position: absolute;
-   top:0;
-   right:0;
+    top: 0;
+    right: 0;
 }
 .thumb {
-    width: 100px;
-    height: 120px;
+    width: 70px;
+    height: 110px;
 }
-#captura{
-	position: absolute;
-	right: 150;
+#captura {
+    position: absolute;
+    right: 150;
 }
-
-@media all and (max-width: 699px) and (min-width: 520px) {}
-@media all and (max-width: 1000px) and (min-width: 700px) {}
-@media all and (min-width: 1001px) {}
+@media all and (max-width: 699px) and (min-width: 520px) {}@media all and (max-width: 1000px) and (min-width: 700px) {}@media all and (min-width: 1001px) {}
