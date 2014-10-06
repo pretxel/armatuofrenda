@@ -86,12 +86,13 @@
 
         $("#mas").on("click", function() {
             loadImages(Vicky.countItems, Vicky.countItems + 6);
+        });
 
+        $("#menos").on("click", function() {
+            loadImages(Vicky.countItems, Vicky.countItems - 12);
         });
 
         $(".droppable-ofrenda").droppable({
-            activeClass: "ui-state-hover",
-            hoverClass: "ui-state-active",
             drop: function(event, ui) {
                 console.log("Drop IN");
                 if (!ui.helper.hasClass("inOfrenda")) {
@@ -108,8 +109,8 @@
         });
 
         $(".droppable-basura").droppable({
-            activeClass: "ui-state-hover",
-            hoverClass: "ui-state-active",
+            activeClass: "animBasura",
+            hoverClass: "wobble-vertical",
             drop: function(event, ui) {
                 console.log("Drop BASURA");
                 // ui.draggable.fadeOut("slow");
@@ -173,8 +174,25 @@
 
         $("ul.listaDrag li").css("display", "none");
 
-        for (vinit; vinit < vfinal; vinit++) {
+        if (vfinal == -5){
+          vinit = 30;
+          vfinal = 19;
+        } 
+        if (vfinal == -11){
+          vinit = 25;
+          vfinal = 13;
+        }
+
+        if (vfinal > vinit){
+           for (vinit; vinit < vfinal; vinit++) {
             $("#r" + vinit).css("display", "block");
+          }
+          Vicky.countItems = Vicky.countItems + 6;
+        }else{
+          for (vfinal; vfinal < (vinit - 6); vfinal++) {
+            $("#r" + vfinal).css("display", "block");
+          }
+          Vicky.countItems = Vicky.countItems - 6;
         }
 
         // $("#ratras").css("display", "block");
@@ -183,10 +201,12 @@
         $("#btnGuardar").css("display", "block");
         $("#btnbasura").css("display", "block");
 
-        Vicky.countItems = Vicky.countItems + 6;
+        
 
         if (Vicky.countItems > 22) {
-            Vicky.countItems = 1;
+          Vicky.countItems = 1;
+        }else if (Vicky.countItems < 0){
+          Vicky.countItems = 19;
         }
 
     }
@@ -210,13 +230,13 @@
         var centroAlto = alto / 2;
 
         var centroX = $(".droppable-ofrenda").width();
-        var centroY = $(".droppable-ofrenda").height();
+        var centroY = $(".ofrenda").height();
 
         $("#btnImagen").css("margin-left", (centroX / 2) - 20);
-        $("#btnImagen").css("margin-top",  (centroY/2) - 120) ;
+        $("#btnImagen").css("margin-top",  "-30%") ;
 
-        $("#imagenDif").css("margin-left", (centroX / 2) - 40);
-        $("#imagenDif").css("margin-top", (centroY/2) - 170);
+        $("#imagenDif").css("margin-left", (centroX / 2) - 50);
+        $("#imagenDif").css("margin-top", "-34%");
 
     }
 
@@ -227,7 +247,10 @@
             onrendered: function(canvas) {
                 //document.body.appendChild(canvas);
                 var img = canvas.toDataURL()
-                window.open(img);
+                var adown = $("#imagenDow").attr("href", img);
+                adown[0].click();
+                // $("#imagenDow").href(img);
+                // window.open(img);
             }
         });
     }
@@ -242,10 +265,12 @@
 
 
     <div class="ofrenda">
-        <div id="boteBasura" class="ui-widget-header ui-droppable droppable-basura">
-            <img src="images/basura.svg" width="100%">
-        </div>
-        <button id="captura"><img src="images/guardar.svg" style="width: 60px;"></button>
+        
+
+        
+        
+    
+       
 
         
 
@@ -272,7 +297,7 @@
             <div id="element">
 
            
-              <img class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
+              <img id="ofrendaPrincipal" class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
             
             
               <div id="btnImagen"></div>
@@ -298,7 +323,7 @@
                     <img id="ocultarMenu" class="button pulse-grow" src="images/izq.svg" style="width: 60px;">
                 </li> -->
                 <li id="rmenos">
-                    <img id="rmenos" class="button pulse-grow" src="images/izq.svg" style="width: 60px;">
+                    <img id="menos" class="button pulse-grow" src="images/izq.svg" style="width: 45px;">
                 </li>
                 <li id="r1">
                     <img id="1" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/agua.svg">
@@ -371,7 +396,7 @@
                 </li>
 
                 <li id="rmas">
-                    <img id="mas" class="button pulse-grow" src="images/der.svg" style="width: 60px;">
+                    <img id="mas" class="button pulse-grow" src="images/der.svg" style="width: 45px;">
                 </li>
             </ul>
 
@@ -387,7 +412,16 @@
         </article>
 
       
+        <ul class="listaControl">
+           <li>
+              <a id="imagenDow" href="" download style="display: none;">Descargar</a>
+              <img id="captura" class="wobble-vertical" src="images/guardar.svg" style="width: 60px;"/>
+          </li>  
 
+          <li id="boteBasura" class="ui-widget-header ui-droppable droppable-basura">
+          </li>
+         
+        </ul>
 
         <input id="fileU" type="file" style="display: none;">
 
