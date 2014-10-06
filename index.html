@@ -6,6 +6,7 @@
     <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
     <link href="css/hover.css" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="css/video-js.css" rel="stylesheet" type="text/css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="js/touch-punch.js"></script>
@@ -13,8 +14,20 @@
     <script src="js/html2canvas.js"></script>
     <script src="js/html2canvas.svg.js"></script>
     <script src="js/jquery.plugin.html2canvas.js"></script>
+    <script src="js/video.js"></script>
     
+    <!-- Add fancyBox main JS and CSS files -->
+  <script type="text/javascript" src="js/jquery.fancybox.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen" />
+  <!-- Add Thumbnail helper (this is optional) -->
+  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-thumbs.css" />
+  <script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
+  <!-- Add Button helper (this is optional) -->
+  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-buttons.css" />
+  <script type="text/javascript" src="js/jquery.fancybox-buttons.js"></script>
 
+  <!-- Add Media helper (this is optional) -->
+  <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
 
 
     <script>
@@ -33,6 +46,10 @@
         //Enable elements drag
         dragElement(true);
 
+        $('.fancybox').fancybox();
+
+       var video = $(".fancybox");
+       video[0].click();
 
         $("#btnImagen").on("click", function() {
             $("#fileU").click();
@@ -64,6 +81,13 @@
 
                 reader.readAsDataURL(f);
             }
+
+        });
+
+        $("#refresh").on("click",function(){
+
+          $("#element img.draggable-ofrenda").remove();
+          $("#imagenDif").empty();
 
         });
 
@@ -127,6 +151,8 @@
             }
         });
 
+
+        
 
         function dragElement(isClone) {
 
@@ -413,7 +439,11 @@
 
       
         <ul class="listaControl">
-           <li>
+          <li>
+              <img id="refresh" class="wobble-vertical" src="images/refresh.svg" style="width: 60px;"/>
+          </li>
+
+          <li>
               <a id="imagenDow" href="" download style="display: none;">Descargar</a>
               <img id="captura" class="wobble-vertical" src="images/guardar.svg" style="width: 60px;"/>
           </li>  
@@ -425,20 +455,31 @@
 
         <input id="fileU" type="file" style="display: none;">
 
+     
+  <ul style="display:none;">
+    <li><a class="fancybox" href="#inline1" title="" >Inline</a></li>
+  </ul>
 
-        <!-- <button onclick="javascript:window.print()">Imprimir</button> -->
 
-        <!--  <div id="draggable1" class="ui-widget-content ui-draggable" style="position: relative;">
-        <p>Arrastra1</p>
-      </div> -->
+  <div id="inline1" style="width:640px;display: none;">
+    
+      <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
+      poster="http://video-js.zencoder.com/oceans-clip.png"
+      data-setup="{}">
+    <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+    <!-- <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' /> -->
+    <!-- <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' /> -->
+  
+    <!-- <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p> -->
+  </video>
+  
+  </div>
 
-        <!-- <canvas height="300px" width="300px" id="micanvas">
-Su navegador no soporta en elemento CANVAS</canvas> -->
 
 
 
     </div>
-    <!-- End demo -->
+    <!-- End -->
 </body>
 
 </html>

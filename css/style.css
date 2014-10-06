@@ -118,9 +118,15 @@ height: 120px;
 #captura {
     /*position: absolute;*/
     right: 150;
+    cursor: pointer;
+}
+#refresh {
+    /*position: absolute;*/
+    right: 150;
+    cursor: pointer;
 }
 .animBasura{
-	-webkit-animation-name: wobble-vertical;
+  -webkit-animation-name: wobble-vertical;
   animation-name: wobble-vertical;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -128,6 +134,7 @@ height: 120px;
   animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
+  background-image: url(../images/basura_hover.svg);
 }
 
 @media all and (max-width: 699px) and (min-width: 520px) {}@media all and (max-width: 1000px) and (min-width: 700px) {}@media all and (min-width: 1001px) {}
