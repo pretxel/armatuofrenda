@@ -1,355 +1,95 @@
-<html>
+<!-- October 2014  -->
+
+<html lang="es">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>arma tu ofrenda</title>
-    <!--  <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet"> -->
-    <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
-    <link href="css/hover.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="css/video-js.css" rel="stylesheet" type="text/css">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="La felicidad general de un pueblo descansa en la independencia individual de sus habitantes.">
+    <!-- for Google -->
+    <meta name="keywords" content="caudillos heroes banco azteca elektra bancoazteca mexico patria credimax credito feria" />
+    <meta name="author" content="Banco Azteca - Elektra" />
+    <meta name="copyright" content="Banco Azteca - Elektra" />
+    <meta name="application-name" content="Caudillos de México" />
+    <meta itemprop="image" content="http://caudillosdemexico.com/icono_CFB.png">
+
+    <!-- for Facebook -->
+    <meta property="og:title" content="Caudillos de México" />
+    <meta property="og:type" content="game" />
+    <meta property="og:image" content="http://caudillosdemexico.com/icono_CFB.png" />
+    <meta property="og:url" content="http://caudillosdemexico.com" />
+    <meta property="og:description" content="La felicidad general de un pueblo descansa en la independencia individual de sus habitantes." />
+
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@elektraComMx">
+    <meta name="twitter:title" content="Caudillos de México">
+    <meta name="twitter:description" content="La felicidad general de un pueblo descansa en la independencia individual de sus habitantes.">
+    <meta name="twitter:creator" content="@elektraComMx">
+    <meta name="twitter:image:src" content="http://caudillosdemexico.com/icono_CFB.png">
+    <meta name="twitter:domain" content="caudillosdemexico.com">
+
+
+    <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
+    <link href="css/hover.css" rel="stylesheet" media="all" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/video-js.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/jquery.fancybox-thumbs.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" />
+
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="js/touch-punch.js"></script>
-    <script src="js/Vicky.framework.js"></script>
-    <script src="js/html2canvas.js"></script>
-    <script src="js/html2canvas.svg.js"></script>
-    <script src="js/jquery.plugin.html2canvas.js"></script>
-    <script src="js/video.js"></script>
-    
-    <!-- Add fancyBox main JS and CSS files -->
-  <script type="text/javascript" src="js/jquery.fancybox.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen" />
-  <!-- Add Thumbnail helper (this is optional) -->
-  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-thumbs.css" />
-  <script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
-  <!-- Add Button helper (this is optional) -->
-  <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-buttons.css" />
-  <script type="text/javascript" src="js/jquery.fancybox-buttons.js"></script>
 
-  <!-- Add Media helper (this is optional) -->
-  <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
-
-
-    <script>
-    $(function() {
-
-
-        console.log($(window).width());
-        console.log($(window).height());
-
-        //
-        resize();
-
-        //Load images svgs until 6 elements
-        loadImages(Vicky.countItems, Vicky.countItems + 6);
-
-        //Enable elements drag
-        dragElement(true);
-
-        $('.fancybox').fancybox();
-
-       var video = $(".fancybox");
-       video[0].click();
-
-        $("#btnImagen").on("click", function() {
-            $("#fileU").click();
-        });
-
-        $("#captura").on("click", function() {
-            capturarPantalla();
-
-        });
-
-        $("#fileU").on("change", function(evt) {
-            var files = evt.target.files; // FileList object
-
-            // Obtenemos la imagen del campo "file".
-            for (var i = 0, f; f = files[i]; i++) {
-                //Solo admitimos imágenes.
-                if (!f.type.match('image.*')) {
-                    continue;
-                }
-
-                var reader = new FileReader();
-
-                reader.onload = (function(theFile) {
-                    return function(e) {
-                        // Insertamos la imagen
-                        document.getElementById("imagenDif").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
-                    };
-                })(f);
-
-                reader.readAsDataURL(f);
-            }
-
-        });
-
-        $("#refresh").on("click",function(){
-
-          $("#element img.draggable-ofrenda").remove();
-          $("#imagenDif").empty();
-
-        });
-
-
-        $("#ocultarMenu").on("click", function() {
-            $(".decoraciones").animate({
-                left: '-100px'
-            });
-            // $("#mostrarMenu").css("display", "block");
-            $("#mostrarMenu").fadeIn("slow");
-        });
-
-        $("#mostrarMenu").on("click", function() {
-            // $("#mostrarMenu").css("display", "none");
-            $("#mostrarMenu").fadeOut("slow");
-            $(".decoraciones").animate({
-                left: '0px'
-            });
-        });
-
-        $("#mas").on("click", function() {
-            loadImages(Vicky.countItems, Vicky.countItems + 6);
-        });
-
-        $("#menos").on("click", function() {
-            loadImages(Vicky.countItems, Vicky.countItems - 12);
-        });
-
-        $(".droppable-ofrenda").droppable({
-            drop: function(event, ui) {
-                console.log("Drop IN");
-                if (!ui.helper.hasClass("inOfrenda")) {
-
-                    $(ui.helper[0]).clone().addClass("inOfrenda").appendTo(this.parentElement);
-                }
-
-            },
-            out: function(event, ui) {
-                $(this).removeClass("ui-state-highlight");
-                $(this).find("p").html("Selecciona!");
-                console.log("Drop OUT");
-            }
-        });
-
-        $(".droppable-basura").droppable({
-            activeClass: "animBasura",
-            hoverClass: "wobble-vertical",
-            drop: function(event, ui) {
-                console.log("Drop BASURA");
-                // ui.draggable.fadeOut("slow");
-                ui.draggable.fadeOut(1500);
-                setTimeout(function() {
-                    ui.draggable.remove();
-                }, 1500);
-
-            },
-            out: function(event, ui) {
-                $(this).removeClass("ui-state-highlight");
-                $(this).find("p").html("Selecciona!");
-                console.log("Drop OUT");
-            }
-        });
-
-
-        
-
-        function dragElement(isClone) {
-
-            if (isClone) {
-
-                $(".draggable-ofrenda").draggable({
-                    helper: "clone",
-                    start: function(event, ui) {
-
-                    },
-                    stop: function(event, ui) {
-                        newId = 10;
-                        //$(this).clone().attr('id', this.id).appendTo(this.parentElement);
-
-                        dragElement(false);
-                    }
-                });
-
-            } else {
-
-                $(".draggable-ofrenda").draggable({
-                    start: function(event, ui) {
-
-                    },
-                    stop: function(event, ui) {
-                        newId = 10;
-                        //$(this).clone().attr('id', this.id).appendTo(this.parentElement);
-
-                        dragElement(false);
-                    }
-                });
-
-            }
-
-
-        }
-
-
-    });
-
-
-
-
-    function loadImages(vinit, vfinal) {
-
-        $("ul.listaDrag li").css("display", "none");
-
-        if (vfinal == -5){
-          vinit = 30;
-          vfinal = 19;
-        } 
-        if (vfinal == -11){
-          vinit = 25;
-          vfinal = 13;
-        }
-
-        if (vfinal > vinit){
-           for (vinit; vinit < vfinal; vinit++) {
-            $("#r" + vinit).css("display", "block");
-          }
-          Vicky.countItems = Vicky.countItems + 6;
-        }else{
-          for (vfinal; vfinal < (vinit - 6); vfinal++) {
-            $("#r" + vfinal).css("display", "block");
-          }
-          Vicky.countItems = Vicky.countItems - 6;
-        }
-
-        // $("#ratras").css("display", "block");
-        $("#rmas").css("display", "block");
-        $("#rmenos").css("display", "block");
-        $("#btnGuardar").css("display", "block");
-        $("#btnbasura").css("display", "block");
-
-        
-
-        if (Vicky.countItems > 22) {
-          Vicky.countItems = 1;
-        }else if (Vicky.countItems < 0){
-          Vicky.countItems = 19;
-        }
-
-    }
-
-    // function preload() {
-
-    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)] = new Image()
-    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)].src = "images/heroes/" + preload.arguments[1] + "" + i + ".png"
-    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)].width = "150";
-    //     Vicky.imagesHeroes[preload.arguments[0]][(i - 1)].id = "heroe";
-
-
-    // }
-
-
-    function resize() {
-        var ancho = $(window).width();
-        var alto = $(window).height();
-
-        var centro = ancho / 2;
-        var centroAlto = alto / 2;
-
-        var centroX = $(".droppable-ofrenda").width();
-        var centroY = $(".ofrenda").height();
-
-        $("#btnImagen").css("margin-left", (centroX / 2) - 20);
-        $("#btnImagen").css("margin-top",  "-30%") ;
-
-        $("#imagenDif").css("margin-left", (centroX / 2) - 50);
-        $("#imagenDif").css("margin-top", "-34%");
-
-    }
-
-
-    function capturarPantalla() {
-        html2canvas($("#element"), {
-            logging: true,
-            onrendered: function(canvas) {
-                //document.body.appendChild(canvas);
-                var img = canvas.toDataURL()
-                var adown = $("#imagenDow").attr("href", img);
-                adown[0].click();
-                // $("#imagenDow").href(img);
-                // window.open(img);
-            }
-        });
-    }
-    </script>
-
+    <!-- Dev -->
+    <!-- <script src="js/touch-punch.js"></script>
+        <script src="js/Vicky.framework.js"></script>
+        <script src="js/html2canvas.js"></script>
+        <script src="js/html2canvas.svg.js"></script>
+        <script src="js/jquery.plugin.html2canvas.js"></script>
+        <script src="js/video.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-buttons.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
+        <script type="text/javascript" src="js/main.js"></script> -->
+
+    <!-- Prod -->
+    <script type="text/javascript" src="js/main.min.js"></script>
 
 </head>
 
 <body>
-
-
-
-
+    <!-- Begin div ofrenda -->
     <div class="ofrenda">
-        
 
-        
-        
-    
-       
+        <div id="element">
 
-        
+            <!-- Main Image -->
+            <img id="ofrendaPrincipal" class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
 
-        <!-- <article class="ofrenda">
-
-      <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
-          <p>Selecciona</p>
-          </div>
-
-          <div id="drop" class="ui-widget-header ui-droppable droppable-ofrenda">
-            <p>Selecciona</p>
-          </div>
-
-          
-
-    </article> -->
-
-        <!-- <img id="mostrarMenu" src="images/arrow-right.svg" style="width: 60px; position: fixed; display:none; cursor: pointer;"> -->
-
-
-
-        <!-- <div id="contenOfre" class="container"> -->
-
-            <div id="element">
-
-           
-              <img id="ofrendaPrincipal" class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
-            
-            
-              <div id="btnImagen"></div>
-            <div id="imagenDif"></div>
+            <!-- Button Photo -->
+            <div id="btnImagen" class="tooltip">
+                <span>
+                    Agrega la foto de tu ser querido.
+                </span>
             </div>
-
-            
-
-
-            
+            <div id="imagenDif"></div>
+        </div>
 
 
-        <!-- </div> -->
-
-
-
+        <!-- Tools Bar  -->
         <article class="decoraciones">
-         
-          <img src="images/abajo_escritorio.jpg" style="width: 100%; height: 30%;">
+
+            <img src="images/abajo_escritorio.jpg" style="width: 100%; height: 30%;">
 
             <ul class="listaDrag">
-               <!--  <li id="ratras">
-                    <img id="ocultarMenu" class="button pulse-grow" src="images/izq.svg" style="width: 60px;">
-                </li> -->
                 <li id="rmenos">
-                    <img id="menos" class="button pulse-grow" src="images/izq.svg" style="width: 45px;">
+                    <img id="menos" class="button controlArrow pulse-grow" src="images/izq.svg" >
                 </li>
                 <li id="r1">
                     <img id="1" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/agua.svg">
@@ -422,64 +162,59 @@
                 </li>
 
                 <li id="rmas">
-                    <img id="mas" class="button pulse-grow" src="images/der.svg" style="width: 45px;">
+                    <img id="mas" class="button controlArrow pulse-grow" src="images/der.svg" >
                 </li>
             </ul>
-
-           <!--  <ul class="listaDrag">
-                <li id="btnGuardar">
-                    <img id="btnGuardar" class="button pulse-grow" src="images/guardar.svg" style="width: 60px;">
-                </li>
-                <li id="btnbasura">
-                    <img id="btnbasura" class="button pulse-grow" src="images/basura.svg" style="width: 60px;">
-                </li>
-              </ul> -->
-
         </article>
 
-      
+        <!-- Controls -->
         <ul class="listaControl">
-          <li>
-              <img id="refresh" class="wobble-vertical" src="images/refresh.svg" style="width: 60px;"/>
-          </li>
+            <li>
+                <img id="refresh" class="controlButton wobble-vertical" src="images/refresh.svg"/>
+            </li>
 
-          <li>
-              <a id="imagenDow" href="" download style="display: none;">Descargar</a>
-              <img id="captura" class="wobble-vertical" src="images/guardar.svg" style="width: 60px;"/>
-          </li>  
+            <li>
+                <a id="imagenDow" href="" download style="display: none;">Descargar</a>
+                <img id="captura" class="controlButton wobble-vertical" src="images/guardar.svg" />
+            </li>
 
-          <li id="boteBasura" class="ui-widget-header ui-droppable droppable-basura">
-          </li>
-         
+            <li id="boteBasura" class="ui-widget-header ui-droppable droppable-basura">
+            </li>
+
         </ul>
+
+        <!-- Social Buttons -->
+        <ul class="listaSocial">
+            <li id="buttonFacebook" class="wobble-vertical">
+
+            </li>
+            <li id="buttonTwitter" class="wobble-vertical">
+            </li>
+
+        </ul>
+
 
         <input id="fileU" type="file" style="display: none;">
 
-     
-  <ul style="display:none;">
-    <li><a class="fancybox" href="#inline1" title="" >Inline</a></li>
-  </ul>
+        <!-- Popup Fancybox -->
+        <ul style="display:none;">
+            <li>
+                <a class="fancybox" href="#inline1" title=""></a>
+            </li>
+        </ul>
+        <div id="inline1" style="width:640px;display: none;">
 
+            <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
+                <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+                <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+                <!--  <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />  -->
 
-  <div id="inline1" style="width:640px;display: none;">
-    
-      <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
-      poster="http://video-js.zencoder.com/oceans-clip.png"
-      data-setup="{}">
-    <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-    <!-- <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' /> -->
-    <!-- <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' /> -->
-  
-    <!-- <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p> -->
-  </video>
-  
-  </div>
+                <!-- <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p> -->
+            </video>
 
-
-
-
+        </div>
     </div>
-    <!-- End -->
+    <!-- End div ofrenda -->
 </body>
 
 </html>

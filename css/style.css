@@ -34,23 +34,42 @@
     padding-right: 10px;*/
     right: 0;
     position: absolute;
-    margin-top: -200px;
+    margin-top: -90px;
+}
+.listaSocial {
+    list-style-type: none;
+    display: inline-flex;
+    /*padding-left: 0px;
+    padding-right: 10px;*/
+    left: 0;
+    position: absolute;
+    margin-top: -40px;
+}
+ul.listaSocial li {
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 ul.listaControl li {
+    float: left;
     margin-left: 10px;
     margin-right: 10px;
 }
 .listaDrag {
     /*list-style-type: none;*/
-    display: inline-flex;
+    /*display: inline;*/
     /*padding-left: 0px;
     padding-right: 10px;
     padding-top: 90px;*/
     /*position: absolute;*/
-    margin-top: -150px;
+    margin-top: -130px;
+    margin-left: 300px;
 }
 ul.listaDrag li {
     display: none;
+    float: left;
+    list-style: none;
 }
 body {
     margin: 0;
@@ -79,9 +98,9 @@ body {
 #btnImagen {
     /*background: gray;
     border: 1px solid black;*/
-    width: 30px;
-    height: 30px;
-    z-index: 900;
+    width: 60px;
+    height: 60px;
+    z-index: 1100;
     position: absolute;
     cursor: pointer;
 }
@@ -94,8 +113,6 @@ body {
     z-index: 1000;
 }
 #boteBasura {
-    width: 70px;
-    height: 70px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -107,13 +124,31 @@ body {
     /*background: rgba(218, 0, 0, 0.42);*/
     /*position: absolute;*/
 }
+#buttonFacebook {
+    width: 60px;
+    height: 60px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url(../images/facebook.svg);
+    background-size: cover;
+}
+#buttonTwitter {
+    width: 60px;
+    height: 60px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url(../images/twitter.svg);
+    background-size: cover;
+}
 .inOfrenda {
     width: 80px;
     height: 80px;
 }
 .thumb {
     width: 85px;
-height: 120px;
+    height: 120px;
 }
 #captura {
     /*position: absolute;*/
@@ -125,16 +160,137 @@ height: 120px;
     right: 150;
     cursor: pointer;
 }
-.animBasura{
-  -webkit-animation-name: wobble-vertical;
-  animation-name: wobble-vertical;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  background-image: url(../images/basura_hover.svg);
+.animBasura {
+    -webkit-animation-name: wobble-vertical;
+    animation-name: wobble-vertical;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    background-image: url(../images/basura_hover.svg);
 }
+/*Tooltip*/
 
-@media all and (max-width: 699px) and (min-width: 520px) {}@media all and (max-width: 1000px) and (min-width: 700px) {}@media all and (min-width: 1001px) {}
+div.tooltip {
+    outline: none;
+}
+div.tooltip strong {
+    line-height: 30px;
+}
+div.tooltip:hover {
+    text-decoration: none;
+}
+div.tooltip span {
+    z-index: 10;
+    display: none;
+    padding: 14px 20px;
+    margin-top: -30px;
+    margin-left: 28px;
+    width: 300px;
+    line-height: 16px;
+}
+div.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    color: #111;
+    border: 1px solid #DCA;
+    background: #fffAF0;
+}
+.callout {
+    z-index: 20;
+    position: absolute;
+    top: 30px;
+    border: 0;
+    left: -12px;
+}
+.controlArrow {
+    width: 45px;
+}
+.controlButton {
+    width: 60px;
+}
+/*CSS3 extras*/
+
+div.tooltip span {
+    border-radius: 4px;
+    box-shadow: 5px 5px 8px #CCC;
+}
+@media all and (max-width: 699px) and (min-width: 300px) {
+    .listaDrag {
+        margin-left: 50px;
+    }
+    .draggable-ofrenda {
+        width: 40px;
+        height: 40px;
+    }
+    .controlArrow {
+        width: 25px;
+    }
+    #buttonTwitter {
+        width: 20px;
+        height: 20px;
+    }
+    #buttonFacebook {
+        width: 20px;
+        height: 20px;
+    }
+    .listaSocial {
+        margin-top: 40px;
+    }
+    ul.listaSocial li {
+        cursor: pointer;
+        float: left;
+        margin-left: 10px;
+    }
+    .listaControl {
+        margin-top: -50px;
+    }
+    .controlButton {
+        width: 30px;
+    }
+    #boteBasura {
+        height: 40px;
+        width: 40px;
+    }
+}
+@media all and (max-width: 1000px) and (min-width: 700px) {
+    .listaDrag {
+        margin-left: 200px;
+    }
+    .draggable-ofrenda {
+        width: 40px;
+        height: 40px;
+    }
+    .controlArrow {
+        width: 25px;
+    }
+    #buttonTwitter {
+        width: 30px;
+        height: 30px;
+    }
+    #buttonFacebook {
+        width: 30px;
+        height: 30px;
+    }
+    .listaSocial {
+        margin-top: 40px;
+    }
+    ul.listaSocial li {
+        cursor: pointer;
+        float: left;
+        margin-left: 10px;
+    }
+    .listaControl {
+        margin-top: -50px;
+    }
+    .controlButton {
+        width: 40px;
+    }
+    #boteBasura {
+        height: 50px;
+        width: 50px;
+    }
+}
+@media all and (min-width: 1001px) {}

@@ -14,15 +14,27 @@ var Vicky = {};
 
 Vicky.countItems = 1;
 
+// Compatibility console with IE
+var alertFallback = true;
+if (typeof console === "undefined" || typeof console.log === "undefined") {
+    console = {};
+    if (alertFallback) {
+        console.log = function(msg) {
+            alert(msg);
+        };
+    } else {
+        console.log = function() {};
+    }
+}
 
 
 ///Método que cifra la cadena proporcionada en Base64
-Vicky.CifraBase64 = function (cadena) {
+Vicky.CifraBase64 = function(cadena) {
     return btoa(cadena);
 }
 ///Método que descifra la cadena proporcionada en Base64
 ///Devuelve un objeto indicando si ocurrió algún Error, la Excepcion que se disparó, así como la CadenaDescifrada.
-Vicky.DescifraBase64 = function (cadena) {
+Vicky.DescifraBase64 = function(cadena) {
     var cadenaDescifrada = "";
     var error = false;
     var excepcion;
@@ -33,17 +45,21 @@ Vicky.DescifraBase64 = function (cadena) {
         excepcion = ex;
     }
 
-    return { Cadena: cadenaDescifrada, Error: error, Excepcion: excepcion };
+    return {
+        Cadena: cadenaDescifrada,
+        Error: error,
+        Excepcion: excepcion
+    };
 }
 
 ///Método que deserializa los parámetros de la URL en un objeto
-Vicky.QueryString = function () {
+Vicky.QueryString = function() {
     var query = window.location.search.substring(1);
     return Vicky.DescifraQueryString(query);
 };
 
 ///Método que deserializa los parámetros de una cadena en un objeto
-Vicky.DescifraQueryString = function (query) {
+Vicky.DescifraQueryString = function(query) {
     var query_string = {};
     var vars = query.split("&");
     for (var i = 0; i < vars.length; i++) {
@@ -62,7 +78,7 @@ Vicky.DescifraQueryString = function (query) {
 
 
 ///Método que devuelve la cadena en formato #,### del número indicado
-Vicky.FormatoMiles = function (numero) {
+Vicky.FormatoMiles = function(numero) {
     if (numero == null) {
         return "0";
     } else {
@@ -71,7 +87,7 @@ Vicky.FormatoMiles = function (numero) {
 }
 
 ///Obtiene la variable GET seleccionada como parametro.
-Vicky.RequestGET = function (Parametro) {
+Vicky.RequestGET = function(Parametro) {
     var URLPagina = window.location.search.substring(1);
     var GETVars = URLPagina.split('&');
     for (var i = 0; i < GETVars.length; i++) {
@@ -89,32 +105,40 @@ Vicky.RequestGET = function (Parametro) {
 ///     [(Object)data]->default = null,
 ///     [async]->default = true,
 ///     (function)callback
-Vicky.Ajax = function (params) {
+Vicky.Ajax = function(params) {
     var uri = params.uri;
     var method = params.method;
     var data = params.data;
     var async = params.async;
     var callback = params.callback;
 
-    if (typeof (callback) == "undefined") {
-        callback({ Error: true, MensajeError: "No ha indicado la Callback", Resultado: null });
+    if (typeof(callback) == "undefined") {
+        callback({
+            Error: true,
+            MensajeError: "No ha indicado la Callback",
+            Resultado: null
+        });
         //console.log(e.message);
     }
 
-    if (typeof (uri) == "undefined") {
-        callback({ Error: true, MensajeError: "No ha indicado el URI", Resultado: null });
+    if (typeof(uri) == "undefined") {
+        callback({
+            Error: true,
+            MensajeError: "No ha indicado el URI",
+            Resultado: null
+        });
         //console.log(e.message);
     }
 
-    if (typeof (method) == "undefined") {
+    if (typeof(method) == "undefined") {
         method = "GET";
     }
 
-    if (typeof (async) == "undefined") {
+    if (typeof(async) == "undefined") {
         async = true;
     }
 
-    if (typeof (data) != "undefined") {
+    if (typeof(data) != "undefined") {
         data = JSON.stringify(data);
     }
 
@@ -125,16 +149,20 @@ Vicky.Ajax = function (params) {
         async: async,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (result) {
-            callback({ Error: false, MensajeError: "", Resultado: result });
+        success: function(result) {
+            callback({
+                Error: false,
+                MensajeError: "",
+                Resultado: result
+            });
         },
-        error: function (e) {
-            callback({ Error: true, MensajeError: e.message, Resultado: null });
+        error: function(e) {
+            callback({
+                Error: true,
+                MensajeError: e.message,
+                Resultado: null
+            });
             //console.log(e.message);
         }
     });
 }
-
-
-
-
