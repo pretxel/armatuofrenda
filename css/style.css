@@ -11,18 +11,19 @@
     }*/
 
 .droppable-ofrenda {
-    width: 100%;
-    height: 70%;
+    width: 1024px;
+    height: 400px;
     /*padding: 0.5em;*/
     /*float: left;*/
     /*margin: 10px;*/
 }
 .decoraciones {
-    /*display: inline-block;*/
+    display: inline-block;
     /*background: rgba(122, 12, 173, 0.59);*/
-    /*background: url(../images/abajo_escritorio.jpg) repeat-y;*/
+    background: url(../images/abajo_escritorio.jpg) repeat-y;
     /*position: absolute;*/
-    /*height: 100%;*/
+    height: 350px;
+    width: 1024px;
     /*margin-top: -100px;*/
     /* overflow-y: scroll;
         overflow-x: hidden;*/
@@ -32,29 +33,28 @@
     display: inline-flex;
     /*padding-left: 0px;
     padding-right: 10px;*/
-    right: 0;
-    position: absolute;
-    margin-top: -90px;
+    /*right: 0;*/
+    /*position: absolute;*/
+    /*margin-top: -90px;*/
 }
 .listaSocial {
     list-style-type: none;
-    display: inline-flex;
     /*padding-left: 0px;
     padding-right: 10px;*/
-    left: 0;
-    position: absolute;
-    margin-top: -40px;
+    /*left: 0;*/
+    /*position: absolute;*/
+    /*margin-top: -40px;*/
 }
 ul.listaSocial li {
     cursor: pointer;
-    float: left;
     margin-right: 10px;
     margin-left: 10px;
 }
 ul.listaControl li {
-    float: left;
-    margin-left: 10px;
+    cursor: pointer;
+    /*float: left;*/
     margin-right: 10px;
+    margin-left: 10px;
 }
 .listaDrag {
     /*list-style-type: none;*/
@@ -63,8 +63,8 @@ ul.listaControl li {
     padding-right: 10px;
     padding-top: 90px;*/
     /*position: absolute;*/
-    margin-top: -130px;
-    margin-left: 300px;
+    /*margin-top: -130px;*/
+    margin-left: 200px;
 }
 ul.listaDrag li {
     display: none;
@@ -75,6 +75,7 @@ body {
     margin: 0;
     text-align: center;
     height: 100%;
+    background: black;
 }
 .container {
     height: 100%;
@@ -93,15 +94,12 @@ body {
     vertical-align: middle;
     font: 16px/1 Arial sans-serif;
 }
-.ofrenda {
-    background: rgb(255, 158, 44);
-}
-#btnImagen {
+.ofrenda {} #btnImagen {
     /*background: gray;
     border: 1px solid black;*/
     width: 60px;
     height: 60px;
-    z-index: 1100;
+    z-index: 900;
     position: absolute;
     cursor: pointer;
 }
@@ -111,7 +109,7 @@ body {
     height: 30px;
     margin-top: -480;
     position: absolute;
-    z-index: 1000;
+    z-index: 500;
 }
 #boteBasura {
     -webkit-background-size: cover;
@@ -119,9 +117,9 @@ body {
     -o-background-size: cover;
     background-image: url(../images/basura.svg);
     background-size: cover;
-    height: 90px;
-    width: 90px;
-    margin: 0px auto;
+    height: 60px;
+    width: 60px;
+    /* margin: 0px auto;*/
     /*background: rgba(218, 0, 0, 0.42);*/
     /*position: absolute;*/
 }
@@ -133,6 +131,7 @@ body {
     -o-background-size: cover;
     background-image: url(../images/facebook.svg);
     background-size: cover;
+    display: block;
 }
 #buttonTwitter {
     width: 60px;
@@ -142,24 +141,48 @@ body {
     -o-background-size: cover;
     background-image: url(../images/twitter.svg);
     background-size: cover;
+    display: block;
 }
 .inOfrenda {
     width: 80px;
     height: 80px;
 }
 .thumb {
-    width: 85px;
-    height: 120px;
+    width: 75px;
+    height: 100px;
 }
 #captura {
-    /*position: absolute;*/
-    right: 150;
-    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url(../images/guardar.svg);
+    background-size: cover;
+    display: block;
 }
 #refresh {
-    /*position: absolute;*/
-    right: 150;
-    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url(../images/refresh.svg);
+    background-size: cover;
+    display: block;
+}
+#replay {
+    width: 60px;
+    height: 60px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url(../images/play.svg);
+    background-size: cover;
+    display: block;
+}
+#imagenDow {
+    
 }
 .animBasura {
     -webkit-animation-name: wobble-vertical;
@@ -186,11 +209,10 @@ div.tooltip:hover {
 div.tooltip span {
     z-index: 10;
     display: none;
-    padding: 14px 20px;
+    padding: 10px;
+    width: 100px;
     margin-top: -30px;
     margin-left: 28px;
-    width: 300px;
-    line-height: 16px;
 }
 div.tooltip:hover span {
     display: inline;
@@ -212,6 +234,10 @@ div.tooltip:hover span {
 .controlButton {
     width: 60px;
 }
+.lstControl {
+    text-align: right;
+    text-align: -webkit-right;
+}
 /*CSS3 extras*/
 
 div.tooltip span {
@@ -229,32 +255,15 @@ div.tooltip span {
     .controlArrow {
         width: 25px;
     }
-    #buttonTwitter {
-        width: 20px;
-        height: 20px;
-    }
-    #buttonFacebook {
-        width: 20px;
-        height: 20px;
-    }
-    .listaSocial {
-        margin-top: 40px;
-    }
     ul.listaSocial li {
         cursor: pointer;
         float: left;
         margin-left: 10px;
     }
-    .listaControl {
-        margin-top: -50px;
-    }
     .controlButton {
         width: 30px;
     }
-    #boteBasura {
-        height: 40px;
-        width: 40px;
-    }
+
 }
 @media all and (max-width: 1000px) and (min-width: 700px) {
     .listaDrag {
@@ -267,31 +276,15 @@ div.tooltip span {
     .controlArrow {
         width: 25px;
     }
-    #buttonTwitter {
-        width: 30px;
-        height: 30px;
-    }
-    #buttonFacebook {
-        width: 30px;
-        height: 30px;
-    }
-    .listaSocial {
-        margin-top: 40px;
-    }
-    ul.listaSocial li {
-        cursor: pointer;
-        float: left;
-        margin-left: 10px;
-    }
-    .listaControl {
-        margin-top: -50px;
-    }
-    .controlButton {
-        width: 40px;
-    }
-    #boteBasura {
-        height: 50px;
-        width: 50px;
-    }
+}
+ul.listaSocial li {
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+}
+.controlButton {
+    width: 40px;
+}
+
 }
 @media all and (min-width: 1001px) {}

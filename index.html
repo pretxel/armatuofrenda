@@ -1,11 +1,11 @@
-<!-- October 2014  -->
+﻿<!-- October 2014  -->
 
 <html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>arma tu ofrenda</title>
+    <title>.:: Mi Ofrenda con Banco Azteca ::.</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Description" content="La felicidad general de un pueblo descansa en la independencia individual de sus habitantes.">
@@ -32,6 +32,7 @@
     <meta name="twitter:image:src" content="http://caudillosdemexico.com/icono_CFB.png">
     <meta name="twitter:domain" content="caudillosdemexico.com">
 
+    <link rel="icon" type="image/png" href="favicon_muertos.png" />
 
     <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
     <link href="css/hover.css" rel="stylesheet" media="all" />
@@ -42,11 +43,11 @@
     <link href="css/jquery.fancybox-thumbs.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" />
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
 
-    <!-- Dev -->
-    <!-- <script src="js/touch-punch.js"></script>
+    <!-- Dev 
+     <script src="js/touch-punch.js"></script>
         <script src="js/Vicky.framework.js"></script>
         <script src="js/html2canvas.js"></script>
         <script src="js/html2canvas.svg.js"></script>
@@ -60,7 +61,7 @@
 
     <!-- Prod -->
     <script type="text/javascript" src="js/main.min.js"></script>
-
+  
 </head>
 
 <body>
@@ -69,27 +70,31 @@
 
         <div id="element">
 
-            <!-- Main Image -->
-            <img id="ofrendaPrincipal" class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
-
             <!-- Button Photo -->
             <div id="btnImagen" class="tooltip">
                 <span>
-                    Agrega la foto de tu ser querido.
+                    ¡Sube una foto!
                 </span>
             </div>
             <div id="imagenDif"></div>
+
+            <!-- Main Image -->
+            <img id="ofrendaPrincipal" class="ui-widget-header ui-droppable droppable-ofrenda" src="images/ofreda_SIN.jpg">
+
+
         </div>
 
 
         <!-- Tools Bar  -->
         <article class="decoraciones">
-
-            <img src="images/abajo_escritorio.jpg" style="width: 100%; height: 30%;">
-
-            <ul class="listaDrag">
+            <!-- <img src="images/abajo_escritorio.jpg" style="width: 1024; height: 200px;"> -->
+            <table style="width: 1024px;margin-left: auto;margin-right: auto; margin-top: 100px;">
+  
+                <tr>
+                    <td colspan = "2">
+                        <ul class="listaDrag">
                 <li id="rmenos">
-                    <img id="menos" class="button controlArrow pulse-grow" src="images/izq.svg" >
+                    <img id="menos" class="button controlArrow pulse-grow" src="images/izq.svg">
                 </li>
                 <li id="r1">
                     <img id="1" class="ui-widget-content ui-draggable draggable-ofrenda button pulse-grow" src="images/svgs/agua.svg">
@@ -162,36 +167,55 @@
                 </li>
 
                 <li id="rmas">
-                    <img id="mas" class="button controlArrow pulse-grow" src="images/der.svg" >
+                    <img id="mas" class="button controlArrow pulse-grow" src="images/der.svg">
                 </li>
             </ul>
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+            
         </article>
 
-        <!-- Controls -->
-        <ul class="listaControl">
-            <li>
-                <img id="refresh" class="controlButton wobble-vertical" src="images/refresh.svg"/>
-            </li>
 
-            <li>
-                <a id="imagenDow" href="" download style="display: none;">Descargar</a>
-                <img id="captura" class="controlButton wobble-vertical" src="images/guardar.svg" />
-            </li>
 
-            <li id="boteBasura" class="ui-widget-header ui-droppable droppable-basura">
-            </li>
+        <table id="iconleft" style="position: absolute; top: 100px; left: 5px;">
+            <tr>
+                <td width="50%">
+                    <!-- Social Buttons -->
+                    <ul class="listaSocial">
+                        <li id="buttonFacebook" class="wobble-vertical" style="float:none; margin-bottom: 15px;">
+                        </li>
+                        <li id="buttonTwitter" class="wobble-vertical" style="float:none; margin-bottom: 15px;">
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <table id="iconright" style="position: absolute; top: 10px; right: 5px;">
+            <tr>
+                <td class="lstControl">
+                    <!-- Social Buttons -->
+                    <ul class="listaSocial">
+                        <li id="replay" class="controlButton wobble-vertical" style="float:none; margin-bottom: 15px;">
+                        </li>
+                        <li id="refresh" class="controlButton wobble-vertical" style="float:none; margin-bottom: 15px;">
+                        </li>
+                        <li id="captura" class="controlButton wobble-vertical" style="float:none; margin-bottom: 15px;"> 
+                        </li>
+                        <li id="boteBasura" class="controlButton ui-widget-header ui-droppable droppable-basura" style="float:none; margin-bottom: 15px;">
+                        </li>
 
-        </ul>
-
-        <!-- Social Buttons -->
-        <ul class="listaSocial">
-            <li id="buttonFacebook" class="wobble-vertical">
-
-            </li>
-            <li id="buttonTwitter" class="wobble-vertical">
-            </li>
-
-        </ul>
+                    </ul>
+                    <!-- Tag download  -->
+                    <a id="imagenDow" href="" download="miofrenda.png" style="display: none;">Descargar</a>
+                    
+                </td>
+            </tr>
+        </table>
 
 
         <input id="fileU" type="file" style="display: none;">
@@ -205,9 +229,9 @@
         <div id="inline1" style="width:640px;display: none;">
 
             <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="images/titulo-muertos.jpg" data-setup="{}">
-                <source src="video/Todas_escenas.m4v" type='video/mp4' />
-                <source src="video/Todas_escenas.webm" type='video/webm' />
-                 <source src="video/Todas_escenas.ogv" type='video/ogg' /> 
+                <source src="video/muertos_final.m4v" type='video/mp4' />
+                <source src="video/muertos_final.webm" type='video/webm' />
+                <!-- <source src="video/dia_muertos_final.ogv" type='video/ogg' /> -->
 
                 <!-- <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p> -->
             </video>

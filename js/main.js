@@ -10,24 +10,30 @@ $(document).ready(function() {
     var video = $(".fancybox");
     video[0].click();
 
-    // Links Social Networks
-    $(".facebook").attr("href", "http://www.facebook.com/sharer.php?u=" + encodeURIComponent("http://www.caudillosdemexico.com"));
-    $(".twitter").attr("href", "https://twitter.com/share?text=Pon a prueba tus conocimientos con Banco Azteca.&url=" + encodeURIComponent("http://caudillosdemexico.com"));
 
-    
+
 
     //Load images svgs until 6 elements
     loadImages(Vicky.countItems, Vicky.countItems + 6);
 
     //Enable elements drag
     dragElement(true);
-
+    resize();
+    PositionIcon();
 
     $(window).resize(function() {
         //Move button photo
         resize();
+        PositionIcon();
     });
 
+
+    $("#buttonFacebook").click(function() {
+        window.open("http://www.facebook.com/sharer.php?u=" + encodeURIComponent("http://www.caudillosdemexico.com"));
+    });
+    $("#buttonTwitter").click(function() {
+        window.open("https://twitter.com/share?text=Pon a prueba tus conocimientos con Banco Azteca.&url=" + encodeURIComponent("http://caudillosdemexico.com"));
+    });
 
     // Events DOM
     $("#btnImagen").on("click", function() {
@@ -67,6 +73,11 @@ $(document).ready(function() {
         $("#element img.draggable-ofrenda").remove();
         $("#imagenDif").empty();
 
+    });
+
+    $("#replay").on("click", function() {
+        var video = $(".fancybox");
+        video[0].click();
     });
 
     $("#ocultarMenu").on("click", function() {
@@ -229,20 +240,33 @@ function resize() {
     var centro = ancho / 2;
     var centroAlto = alto / 2;
 
-    var centroX = $(".droppable-ofrenda").width();
-    var centroY = $(".ofrenda").height();
+    var centroX = $(".ofrenda").width();
+    var centroY = $("#ofrendaPrincipal").height();
 
-    $("#btnImagen").css("margin-left", (centroX / 2) - 20);
-    $("#btnImagen").css("margin-top", "-30%");
+    var porcentaje = centroY * 11.2 / 100;
 
-    $("#imagenDif").css("margin-left", (centroX / 2) - 50);
-    $("#imagenDif").css("margin-top", "-34%");
+    $("#btnImagen").css("margin-left", (centroX / 2) - 30);
+    $("#btnImagen").css("margin-top", "5%");
 
-    if (ancho < 800){
-       $("#ofrendaPrincipal").attr("src","images/mobiles_ofrenda.jpg");
-    }else{
-        $("#ofrendaPrincipal").attr("src","images/ofreda_SIN.jpg");
+    $("#imagenDif").css("margin-left", (centroX / 2) - 40);
+    $("#imagenDif").css("margin-top", porcentaje + "px");
+
+    if (ancho < 1024) {
+        // $("#ofrendaPrincipal").attr("width", ancho);
+        $(".droppable-ofrenda").css("width", ancho);
+        $(".decoraciones").css("width", ancho);
+        $(".decoraciones table").css("width", ancho);
+    } else {
+        $(".droppable-ofrenda").css("width", "1024");
+        $(".decoraciones").css("width", "1024");
+        $(".decoraciones table").css("width", "1024");
     }
+
+    // if (ancho < 800) {
+    //     $("#ofrendaPrincipal").attr("src", "images/mobiles_ofrenda.jpg");
+    // } else {
+    //     $("#ofrendaPrincipal").attr("src", "images/ofreda_SIN.jpg");
+    // }
 
 }
 
@@ -256,4 +280,15 @@ function capturarPantalla() {
             adown[0].click();
         }
     });
+}
+
+function PositionIcon() {
+    var position = ($(window).width() - $("#ofrendaPrincipal").width()) / 2;
+    if (position > 0) {
+        $("#iconleft").css("left", parseInt(position) - 40 + "px");
+        $("#iconright").css("right", parseInt(position) + "px");
+    } else {
+        $("#iconleft").css("left", "5px");
+        $("#iconright").css("right", "5px");
+    }
 }
