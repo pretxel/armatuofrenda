@@ -1,8 +1,14 @@
 $(document).ready(function() {
-
-
+    
     // console.log($(window).width());
     // console.log($(window).height());
+
+    $(window).resize(function() {
+        //Move button photo
+        resize();
+        PositionIcon();
+        ResizePlayer();
+    });
 
     //Enable Popup Fancybox
     $('.fancybox').fancybox();
@@ -11,22 +17,18 @@ $(document).ready(function() {
     video[0].click();
 
 
-
-
     //Load images svgs until 6 elements
     loadImages(Vicky.countItems, Vicky.countItems + 6);
 
     //Enable elements drag
     dragElement(true);
+    //Resize DOM Elements when change the screen
     resize();
     PositionIcon();
 
-    $(window).resize(function() {
-        //Move button photo
-        resize();
-        PositionIcon();
-    });
-
+    //Resize player with fancybox
+    setTimeout(function(){ResizePlayer();}, 5);
+   
 
     $("#buttonFacebook").click(function() {
         window.open("http://www.facebook.com/sharer.php?u=" + encodeURIComponent("http://www.caudillosdemexico.com"));
@@ -173,6 +175,10 @@ $(document).ready(function() {
 
     }
 
+
+     
+    
+
 });
 
 
@@ -291,4 +297,15 @@ function PositionIcon() {
         $("#iconleft").css("left", "5px");
         $("#iconright").css("right", "5px");
     }
+}
+
+function ResizePlayer(){
+    $(".vjs-tech").css("width", $(window).width() - 200);
+    $(".vjs-tech").css("height", $(window).height() - 200);
+    $("#boxPlayer").css("width", $(window).width() - 200);
+    $("#boxPlayer").css("height", $(window).height() - 200);
+    $("#videoPlayer").css("width", $(window).width() - 200);
+    $("#videoPlayer").css("height", $(window).height() - 200);
+    $(".vjs-big-play-button").css("left", ($(window).width() / 2) -150);
+    $(".vjs-big-play-button").css("top", ($(window).height() / 2) -150);
 }

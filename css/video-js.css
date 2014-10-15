@@ -973,8 +973,8 @@ body.vjs-full-window {
     font-size: 18px;
     font-family: Arial, sans-serif;
     text-align: center;
-    width: 300px;
-    height: 150px;
+    /*width: 300px;
+    height: 150px;*/
     margin: 0px auto;
 }
 .vjs-no-js a, .vjs-no-js a:visited {
