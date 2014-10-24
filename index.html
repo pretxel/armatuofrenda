@@ -19,18 +19,18 @@
     <!-- for Facebook -->
     <meta property="og:title" content="Mi Ofrenda con Banco Azteca" />
     <meta property="og:type" content="game" />
-    <meta property="og:image" content="http://tradicionmx.com/shareFB_muertos.jpg" />
-    <meta property="og:url" content="http://tradicionmx.com" />
-    <meta property="og:description" content="La felicidad general de un pueblo descansa en la independencia individual de sus habitantes." />
+    <meta property="og:image" content="http://www.tradicionesmx.com/shareFB_muertos.jpg" />
+    <meta property="og:url" content="http://www.tradicionesmx.com" />
+    <meta property="og:description" content="La calaca en Banco Azteca esperaba, su cuenta de ahorros quería abrir, el ejecutivo nervioso se encontraba, pues sabía que era tiempo de partír." />
 
     <!-- for Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@elektraComMx">
+    <meta name="twitter:site" content="@bancoazteca">
     <meta name="twitter:title" content="Mi Ofrenda con Banco Azteca">
-    <meta name="twitter:description" content="La felicidad general de un pueblo descansa en la independencia individual de sus habitantes.">
+    <meta name="twitter:description" content="La calaca en Banco Azteca esperaba, su cuenta de ahorros queria abrir, el ejecutivo nervioso se encontraba, pues sabia que era tiempo de partir.">
     <meta name="twitter:creator" content="@elektraComMx">
-    <meta name="twitter:image:src" content="http://tradicionmx.com/shareFB_muertos.jpg">
-    <meta name="twitter:domain" content="tradicionmx.com">
+    <meta name="twitter:image:src" content="http://www.tradicionesmx/shareFB_muertos.jpg">
+    <meta name="twitter:domain" content="www.tradicionesmx.com">
 
     <link rel="icon" type="image/png" href="favicon_muertos.png" />
 
@@ -46,24 +46,64 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
 
-    <!-- Dev 
+    <!-- Dev -->
      <script src="js/touch-punch.js"></script>
         <script src="js/Vicky.framework.js"></script>
-        <script src="js/html2canvas.js"></script>
-        <script src="js/html2canvas.svg.js"></script>
+        
         <script src="js/jquery.plugin.html2canvas.js"></script>
        
         <script type="text/javascript" src="js/jquery.fancybox.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox-buttons.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
-        <script type="text/javascript" src="js/main.js"></script> 
-        <script src="js/video.js"></script>-->
+       <!-- <script type="text/javascript" src="js/main.js"></script> -->
+        
 
 
-    <!-- Prod -->
-    <script type="text/javascript" src="js/main.min.js"></script> 
+    <!-- Prod 
+    <script type="text/javascript" src="js/main.min.js"></script> -->
+   
+	<script type="text/javascript" >
+
+	
+	$(document).ready(function(){
+
+		if (!Vicky.isCanvasSupported()){
+		document.getElementById('ofrendaPrincipal').style.display = 'none';
+document.getElementById('iconleft').style.display = 'none';
+document.getElementById('iconright').style.display = 'none';
+document.getElementById('btnImagen').style.display = 'none';
+document.getElementById('artdecoraciones').style.display = 'none';	
+document.getElementById('boxBrowsers').style.display = 'block';
+	
+	}else{
+			
+$.getScript( "js/main.min.js", function( data, textStatus, jqxhr ) {
   
+  //console.log( textStatus ); // Success
+  //console.log( jqxhr.status ); // 200
+  //console.log( "Load was performed." );
+});
+		
+		
+	}
+
+});
+
+	
+
+	</script> 
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55806005-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body>
@@ -88,7 +128,7 @@
 
 
         <!-- Tools Bar  -->
-        <article class="decoraciones">
+        <article id="artdecoraciones" class="decoraciones">
             <!-- <img src="images/abajo_escritorio.jpg" style="width: 1024; height: 200px;"> -->
             <table style="width: 1024px;margin-left: auto;margin-right: auto; margin-top: 100px;">
   
@@ -225,7 +265,8 @@
         <!-- Popup Fancybox -->
         <ul style="display:none;">
             <li>
-                <a class="fancybox" href="#boxPlayer" title=""></a>
+                <a id="fancyboxPlayer" class="fancyboxPlayer" href="#boxPlayer" title=""></a>
+                <a id="fancyboxBrowsers" class="fancyboxBrowsers" href="#boxBrowsers" title=""></a>
             </li>
         </ul>
         <div id="boxPlayer" style="display: none;">
@@ -239,8 +280,19 @@
             </video>
 
         </div>
+	<center>
+         <div id="boxBrowsers" style="display: none; width:450px;">
+
+            <h1 style="color: rgb(217,1,1);">Tu navegador no es compatible</h1>
+            <img src="">
+
+        </div>
+	</center>
+
     </div>
     <!-- End div ofrenda -->
 </body>
+
+
 
 </html>

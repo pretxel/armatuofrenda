@@ -98,6 +98,12 @@ Vicky.RequestGET = function(Parametro) {
     }
 }
 
+Vicky.isCanvasSupported = function(){
+    var elem = document.createElement('canvas');
+    return !!(elem.getContext && elem.getContext('2d'));
+}
+
+
 ///Método que consume un servicio REST
 ///Recibe un objeto cuyos miembros son:
 ///     uri,
