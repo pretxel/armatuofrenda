@@ -10,8 +10,7 @@ Aplicación Web para el día festivo en México "Día de Muertos", consiste en c
 * touch-punch.js
 * video.js.
 
-#Disfruta!!!
-http://armatuofrenda.herokuapp.com
-[GitHub](http://armatuofrenda.herokuapp.com)
+#¡Demo!
+[armatuofrenda](http://armatuofrenda.herokuapp.com)
 
 
